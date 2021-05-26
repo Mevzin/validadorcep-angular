@@ -27,19 +27,28 @@ export class ViaCepVerifComponent implements OnInit {
   }
 
   validaCep(cepin: string){
-    if(cepin.length < 8 || cepin.length > 8){
-      this.valido = false;
-    }else if(cepin.length == 8){
-      this.valido = true;
-      this.getCep(cepin);
+    cepin = cepin.replace(/\D/g, '');
+    if(cepin != ""){
+      var validacep = /^[0-9]{8}$/;
+      if(validacep.test(cepin)){
+        this.getCep(cepin);
+      }
     }
+    // if(cepin.length < 8 || cepin.length > 8){
+    //   this.valido = false;
+    // }else if(cepin.length == 8){
+    //   this.valido = true;
+    //   this.getCep(cepin);
+    // }
   }
   getCep(cepin: string){
     console.log(cepin)
     this.viacepservice.getCEP(cepin)
-      .subscribe(post => {
-        console.log(post);
-        // this.allCeps = post;
-      })
+      .subscribe(post => this.populaCampos(post));
+  }
+  populaCampos(post: any){
+  //  form.setValue({
+
+  //  })
   }
 }
