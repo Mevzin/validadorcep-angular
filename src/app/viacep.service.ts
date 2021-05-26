@@ -10,7 +10,7 @@ export class ViacepService {
   constructor(private http: HttpClient) {
 
    }
-   public getCEP(cepin: string): Observable<any> {
+   public getCEP(cepin: string): Observable<number> {
      console.log(cepin)
    return this.http.get(`http://viacep.com.br/ws/${cepin}/json/`);//.subscribe((x) =>console.log('ggggg'));
 
