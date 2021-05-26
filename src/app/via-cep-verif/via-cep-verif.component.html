@@ -1,0 +1,8 @@
+<div>
+<h1>Digite o CEP para verificação</h1>
+</div>
+<div class="form-floating mb-3">
+  <input #searchBox type="number" min="8" max="8" class="form-control cep-mask" id="floatingInput" (input)="validaCep(searchBox.value)" placeholder="Ex.: 00000-000">
+  <label for="floatingInput">CEP</label>
+</div>
+<button *ngIf ="valido" type="button" class="btn btn-success">Guardar</button>
