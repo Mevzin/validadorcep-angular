@@ -11,10 +11,11 @@ export class ViacepService {
 
    }
    public getCEP(cepin: string): Observable<any> {
-     console.log(cepin)
-   return this.http.get(`http://viacep.com.br/ws/${cepin}/json/`);//.subscribe((x) =>console.log('ggggg'));
+    return this.http.get(`http://viacep.com.br/ws/${cepin}/json/`);
+  }
 
-}
-
+  saveCep(allCeps: any){
+    return this.http.post(`http://localhost:3000/ceps`, allCeps);
+  }
 
 }

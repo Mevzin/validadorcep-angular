@@ -6,7 +6,8 @@ interface ResultCepVia {
   logradouro: string,
   bairro: string,
   localidade: string,
-  uf: string
+  uf: string,
+  erro: Boolean
 };
 
 @Component({
@@ -15,15 +16,16 @@ interface ResultCepVia {
   styleUrls: ['./via-cep-verif.component.css']
 })
 export class ViaCepVerifComponent implements OnInit {
-  allCeps: ResultCepVia[];
+  allCeps!: ResultCepVia;
   valido = false;
+  padrao = false;
 
   constructor(private viacepservice: ViacepService) {
-    this.allCeps = [];
+    //this.allCeps = [];
    }
 
   ngOnInit(): void {
-    this.getCep;
+
   }
 
   validaCep(cepin: string){
@@ -34,21 +36,40 @@ export class ViaCepVerifComponent implements OnInit {
         this.getCep(cepin);
       }
     }
-    // if(cepin.length < 8 || cepin.length > 8){
-    //   this.valido = false;
-    // }else if(cepin.length == 8){
-    //   this.valido = true;
-    //   this.getCep(cepin);
-    // }
+    if(cepin.length < 8 || cepin.length > 8){
+      this.padrao = false;
+    }else if(cepin.length == 8){
+      this.padrao = true;
+    }
   }
   getCep(cepin: string){
-    console.log(cepin)
-    this.viacepservice.getCEP(cepin)
-      .subscribe(post => this.populaCampos(post));
-  }
-  populaCampos(post: any){
-  //  form.setValue({
 
-  //  })
+    this.viacepservice.getCEP(cepin)
+      .subscribe(post => {
+        if(post){
+          console.log(post);
+          this.allCeps = post
+          if(this.allCeps.erro == true){
+            this.valido = false;
+            this.padrao = false
+            console.log("erro")
+          }else{
+            this.valido = true;
+            this.padrao = true;
+            console.log("foi")
+          }
+        }
+
+      });
+  }
+
+  sendCep(event: Event ){
+    event.preventDefault()
+    console.log(event);
+
+  this.viacepservice.saveCep(this.allCeps)
+    .subscribe(resposta => {
+      console.log("send");
+    })
   }
 }

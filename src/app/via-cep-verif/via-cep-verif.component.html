@@ -2,26 +2,36 @@
 <h1>Digite o CEP para verificação</h1>
 </div>
 <div class="form-floating mb-3">
-  <input #searchBox type="number" min="8" max="8" class="form-control cep-mask" id="floatingInput" (blur)="validaCep(searchBox.value)" placeholder="Ex.: 00000-000">
+  <input #searchBox type="number" class="form-control cep-mask" id="floatingInput" (input)="validaCep(searchBox.value)" placeholder="Ex.: 00000-000">
   <label for="floatingInput">CEP</label>
+  <p *ngIf="!padrao" class="pd-6 fw-bold">Digite um cep valido!</p>
 </div>
-<div >
-  <form #frm="ngForm">
+<div *ngIf="valido">
+
+  <form class="row g-3" id="fomula" #frm="ngForm" >
     <fieldset disabled>
       <legend>Dados do cep</legend>
-      <div class="mb-3">
+      <div class="mb-3 col-md-5">
         <label for="disabledTextInput" class="form-label">CEP</label>
-        <input type="text" name="cep" id="cep" class="form-control" placeholder="">
+        <input type="text" name="cep" id="cep" class="form-control" placeholder="" value="{{allCeps.cep}}">
       </div>
-    <div class="mb-3">
+      <div class="mb-3 col-md-5">
+        <label for="disabledTextInput"  name="cidade"  class="form-label">Rua</label>
+        <input type="text" id="cidade" class="form-control" placeholder="" value="{{allCeps.logradouro}}">
+      </div>
+    <div class="mb-3 col-md-5">
         <label for="disabledTextInput" class="form-label">Bairro</label>
-        <input type="text" id="bairro"  name="bairro"  class="form-control" placeholder="">
+        <input type="text" id="bairro"  name="bairro"  class="form-control" placeholder="" [value]="allCeps.bairro">
       </div>
-      <div class="mb-3">
+      <div class="mb-3 col-md-5">
         <label for="disabledTextInput"  name="cidade"  class="form-label">Cidade</label>
-        <input type="text" id="cidade" class="form-control" placeholder="">
+        <input type="text" id="cidade" class="form-control" placeholder="" value="{{allCeps.localidade}}">
+      </div>
+      <div class="mb-3 col-md-5">
+        <label for="disabledTextInput"  name="cidade"  class="form-label">Estado</label>
+        <input type="text" id="cidade" class="form-control" placeholder="" value="{{allCeps.uf}}">
       </div>
     </fieldset>
   </form>
-  <button  type="button" class="btn btn-success">Guardar</button>
+  <button *ngIf="padrao" (click)="sendCep($event)"  class="btn btn-success">Guardar</button>
 </div>

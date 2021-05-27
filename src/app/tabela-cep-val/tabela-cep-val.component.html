@@ -2,20 +2,22 @@
 <table  class="table">
   <thead >
     <tr>
-      <th scope="col">cep</th>
-      <th scope="col">rua</th>
-      <th scope="col">bairro</th>
-      <th scope="col">cidade</th>
-      <th scope="col">estado</th>
+      <th scope="col">CEP</th>
+      <th scope="col">Rua</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Id</th>
     </tr>
   </thead>
   <tbody *ngFor="let dados of allCeps">
     <tr>
-      <td>{{dados.cep}}</td>
-      <td>{{dados.logradouro}}</td>
-      <td>{{dados.bairro}}</td>
-      <td>{{dados.localidade}}</td>
-      <td>{{dados.uf}}</td>
+      <td>{{dados.cep ? dados.bairro : '---'}}}</td>
+      <td>{{dados.logradouro ? dados.bairro : '---'}}}</td>
+      <td>{{dados.bairro ? dados.bairro : '---'}}</td>
+      <td>{{dados.localidade ? dados.bairro : '---'}}}</td>
+      <td>{{dados.uf ? dados.bairro : '---'}}}</td>
+      <td>{{dados.id ? dados.bairro : '---'}}}</td>
     </tr>
   </tbody>
 </table>

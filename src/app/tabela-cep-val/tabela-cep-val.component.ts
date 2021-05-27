@@ -6,7 +6,8 @@ interface ResultCep {
   logradouro: string,
   bairro: string,
   localidade: string,
-  uf: string
+  uf: string,
+  id: string
 };
 
 @Component({
