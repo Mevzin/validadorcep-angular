@@ -12,12 +12,12 @@
   </thead>
   <tbody *ngFor="let dados of allCeps">
     <tr>
-      <td>{{dados.cep ? dados.bairro : '---'}}}</td>
-      <td>{{dados.logradouro ? dados.bairro : '---'}}}</td>
+      <td>{{dados.cep ? dados.cep : '---'}}</td>
+      <td>{{dados.logradouro ? dados.logradouro : '---'}}</td>
       <td>{{dados.bairro ? dados.bairro : '---'}}</td>
-      <td>{{dados.localidade ? dados.bairro : '---'}}}</td>
-      <td>{{dados.uf ? dados.bairro : '---'}}}</td>
-      <td>{{dados.id ? dados.bairro : '---'}}}</td>
+      <td>{{dados.localidade ? dados.localidade : '---'}}</td>
+      <td>{{dados.uf ? dados.uf : '---'}}</td>
+      <td>{{dados.id ? dados.id : '---'}}</td>
     </tr>
   </tbody>
 </table>
