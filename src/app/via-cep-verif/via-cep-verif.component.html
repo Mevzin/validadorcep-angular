@@ -2,7 +2,7 @@
 <h1>Digite o CEP para verificação</h1>
 </div>
 <div class="form-floating mb-3">
-  <input #searchBox type="number" class="form-control cep-mask" id="floatingInput" (input)="validaCep(searchBox.value)" placeholder="Ex.: 00000-000">
+  <input #searchBox mask="00000-000" type="text" class="form-control cep-mask" id="floatingInput" (input)="validaCep(searchBox.value)" placeholder="Ex.: 00000-000">
   <label for="floatingInput">CEP</label>
   <p *ngIf="!padrao" class="pd-6 fw-bold">Digite um cep valido!</p>
 </div>

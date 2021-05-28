@@ -36,9 +36,9 @@ export class ViaCepVerifComponent implements OnInit {
         this.getCep(cepin);
       }
     }
-    if(cepin.length < 8 || cepin.length > 8){
+    if(cepin.length < 9 || cepin.length > 9){
       this.padrao = false;
-    }else if(cepin.length == 8){
+    }else if(cepin.length == 9){
       this.padrao = true;
     }
   }
